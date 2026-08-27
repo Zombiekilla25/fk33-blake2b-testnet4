@@ -1,0 +1,19 @@
+{
+  "acceptance_ratio": 1.0,
+  "accepted_difficulty_units": 114,
+  "accepted_shares": 114,
+  "active_mining_seconds": 549.917228,
+  "bitstream_sha256": "33880a2339d8b03db044f74e8258353f9c8f1e9832e74b52efccd18e2328872c",
+  "estimated_hashrate_ghs": 0.890377,
+  "hardware_serial_suffix": "0957",
+  "last_error": null,
+  "network_target_shares": 0,
+  "reconnects": 0,
+  "rejected_shares": 0,
+  "rolling_30m_hashrate_ghs": 0.890356,
+  "sessions_started": 1,
+  "source_run": "fk33-blake2b-fk0957-continuous-v3-20260827T172125Z",
+  "status": "STOPPED",
+  "unknown_submissions": 0,
+  "wall_runtime_seconds": 549.930519
+}

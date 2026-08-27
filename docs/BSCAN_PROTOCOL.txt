@@ -1,0 +1,28 @@
+FK33 BLAKE2B PROFILE-0 BSCAN PROTOCOL — REVISION 1
+
+Host to FPGA, USER2:
+  magic:       46 4a
+  version:     01
+  type:        01
+  length:      71 00 (113 payload bytes)
+  payload[0]:  job tag
+  payload[1:81]: exact 80 serialized ASIC bytes
+      bytes 0..31:  prev_asic
+      bytes 32..35: starting nNonce, little-endian
+      bytes 36..39: nNonce2, little-endian
+      bytes 40..43: time_offset, little-endian
+      bytes 44..47: nNonce3, little-endian
+      bytes 48..79: mid/prehash
+  payload[81:113]: 256-bit numeric target, little-endian wire bytes
+  trailer: CRC16/CCITT-FALSE over payload, little-endian
+  total frame: 121 bytes
+
+FPGA to host, USER1:
+  Existing 45-byte share frame is preserved.
+  payload: tag[1] + nNonce[4 little-endian] + digest[32]
+  digest is zero in the lean miner response.
+  Host reconstructs nonce8 using the fixed nNonce2 from its job and
+  recomputes/verifies the BLAKE2b/XOR result before submitting to DATUM.
+
+Initial hardware-validation clock: 200 MHz.
+Five nonces per cycle: nominal 1.000 GH/s.

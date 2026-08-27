@@ -1,0 +1,30 @@
+{
+  "checks": {
+    "job_frame_bytes": true,
+    "known_raw_digest": true,
+    "lean_digest_zero": true,
+    "nonce": true,
+    "profile0_final_equals_raw": true,
+    "share_frame_bytes": true,
+    "tag": true,
+    "target": true
+  },
+  "elapsed_seconds": 0.260298,
+  "expected_nonce": "0badf00d",
+  "final_digest": "4b495dcf05d70a49785b799b22284fbcd9dd1209237c53c87e4674b15587d704",
+  "ignored_frames": 0,
+  "job_frame_bytes": 121,
+  "job_frame_sha256": "034fd4bce4b22fd407019025c294a723225dce762bb059934feaa0312186437c",
+  "port": 23000,
+  "raw_digest": "4b495dcf05d70a49785b799b22284fbcd9dd1209237c53c87e4674b15587d704",
+  "result": "PASS",
+  "returned_nonce": "0badf00d",
+  "share_frame_bytes": 45,
+  "share_frame_sha256": "5af938fe90b7bd0be97b9231e3f180c42810d073c0875428e18811451f854fa6",
+  "submission_transmitted": false,
+  "tag": "10",
+  "target_numeric": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+  "transport": "127.0.0.1",
+  "wire_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+  "xor_mask": "0000000000000000000000000000000000000000000000000000000000000000"
+}

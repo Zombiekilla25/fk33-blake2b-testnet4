@@ -1,0 +1,5 @@
+set_property PACKAGE_PIN BC26 [get_ports clk_p]
+set_property PACKAGE_PIN BC27 [get_ports clk_n]
+set_property IOSTANDARD LVDS [get_ports {clk_p clk_n}]
+create_clock -name clk200 -period 5.000 [get_ports clk_p]
+set_property BITSTREAM.GENERAL.COMPRESS FALSE [current_design]

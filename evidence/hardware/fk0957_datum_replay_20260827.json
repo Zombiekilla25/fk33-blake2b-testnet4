@@ -1,0 +1,49 @@
+{
+  "checks": {
+    "fpga_job_frame_bytes": true,
+    "fpga_max_target": true,
+    "lean_digest_zero": true,
+    "profile0_final_equals_raw": true,
+    "share_frame_bytes": true,
+    "source_job_frame_bytes": true,
+    "source_marked_unsubmitted": true,
+    "submit_nonce8_mapping": true,
+    "submit_preview_five_fields": true,
+    "tag": true
+  },
+  "difficulty": 16384,
+  "elapsed_seconds": 0.258881,
+  "final_digest": "52189eb51aed926e071d34fedbb805cc6e4e683bba486609c385266441546a1c",
+  "fpga_job_frame_sha256": "7f88a4352c2a0de7a42845c59da258034f825076c110dca4c3d497d8cc401bea",
+  "fpga_target_numeric": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "ignored_frames": 0,
+  "job_frame_bytes": 121,
+  "network_target_meets": false,
+  "nonce8_submit": "0000000000000000",
+  "original_job_frame_sha256": "fe247804d18a1e52474a81cf691098a6431b0ea89e6bd1e00a24c8b614fd9fe6",
+  "original_target_numeric": "000000000003fffc000000000000000000000000000000000000000000000000",
+  "raw_digest": "52189eb51aed926e071d34fedbb805cc6e4e683bba486609c385266441546a1c",
+  "result": "PASS",
+  "returned_nonce": "00000000",
+  "schema": "fk33-blake2b-hardware-datum-replay-v1",
+  "share_frame_bytes": 45,
+  "share_frame_sha256": "b5c7c4a79a7f0e31441d2d811a685b3122cd423476d1c07ebb7ed1ebdf293c1f",
+  "source_job_id": "6a8f8dd102c0df00",
+  "source_job_stale": true,
+  "source_translation_sha256": "e7375e0ef9a8aaa649c099d17672db01a00d31a33219ffac772fed46a2847064",
+  "submission_transmitted": false,
+  "submit_preview": {
+    "id": 3,
+    "method": "mining.submit",
+    "params": [
+      "fk33-software-translation",
+      "6a8f8dd102c0df00",
+      "0000000000000000",
+      "0000000000000000",
+      "0000000000000000"
+    ]
+  },
+  "tag": "d4",
+  "wire_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+  "xor_mask": "0000000000000000000000000000000000000000000000000000000000000000"
+}

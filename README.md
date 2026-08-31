@@ -23,21 +23,28 @@ Password:  x
 
 ### Bitstream developer fee
 
-Official mining clients distributed with this bitstream are intended to use a
-disclosed **1% developer fee**. The client implements this separately from the
-pool's supplier split by spending approximately 1% of mining sweeps on a second
-Stratum session authorized as:
+Official FK33 v8 and JCM33 v2 mining clients implement a disclosed **1%
+developer fee**. The clients implement this separately from the pool's supplier
+split by assigning exactly one of every 100 work dispatches to a second Stratum
+session, while that session is healthy, authorized as:
 
 ```text
 bc1qe77h4ddu6cctl4zgxhy4wa6cf2z0gpsxw9dkvu.devfee
 ```
 
-The remaining approximately 99% of sweeps mine to the user's configured payout
-address. PyBLOCK's supplier and pool shares are separate pool-side allocations;
-they are not the bitstream developer fee. Third-party clients that do not
-implement the second-session rotation do not enforce this fee. The archived
-Carousel-client hashes below identify the 2026-08-31 deployment and, by
-themselves, do not prove developer-fee enforcement.
+The remaining 99 dispatches mine to the user's configured payout address. If
+the developer session is unavailable, the clients fail open to user mining and
+never recover missed fee slots later. PyBLOCK's supplier and pool shares are
+separate pool-side allocations; they are not the bitstream developer fee.
+Third-party clients that do not implement the second-session rotation do not
+enforce this fee.
+
+On 2026-08-31, two FK33 v8 processes and one dual-JCM33 v2 process each held two
+established connections to `pool.pyblock.xyz:21020`, proving separate primary
+and developer Stratum sessions. Offline tests proved deterministic 1-in-100
+scheduling, exact translator-compatible handshake IDs, job/session routing,
+and fail-open behavior. This does not claim that a developer share had already
+been accepted at that snapshot.
 
 The 2026-08-31 validation snapshot used the earlier PyBLOCK Carousel endpoint
 at `pool.pyblock.xyz:30110`, which negotiated share difficulty 16,384. At that

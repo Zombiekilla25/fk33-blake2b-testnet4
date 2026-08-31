@@ -1,67 +1,65 @@
-# FK33 BLAKE2b Testnet4 reference
+# FK33 and JCM33 BLAKE2b FPGA reference
 
-Experimental Testnet4-only FPGA miner reference for the FK33. This repository
-preserves the original five-lane, 200 MHz Profile-0 image physically qualified
-on FK0957.
+Experimental BLAKE2b FPGA mining research for SQRL FK33 and JCM33 hardware.
+The repository now preserves both the original qualified Testnet4 lineage and
+the six-lane 195 MHz mainnet/PyBLOCK deployment exercised on 2026-08-31.
 
-## Qualified image
+## Current status
 
-- Release asset: `fk33_blake2b_profile0_5lane_200_testnet4_v1_33880a23.bit`
-- SHA-256: `33880a2339d8b03db044f74e8258353f9c8f1e9832e74b52efccd18e2328872c`
-- Device: SQRL FK33 / Xilinx Virtex UltraScale+ VU33P
-- Datapath: five lanes at 200 MHz
-- Nominal capacity: 1.000 GH/s
-- Vivado implementation: setup WNS `+0.034 ns`, hold WHS `+0.009 ns`
-- Routing errors: 0
-- DRC errors: 0
+| Path | Hardware | Clock and lanes | Evidence boundary |
+|---|---|---:|---|
+| Legacy Testnet4 | FK33 FK0957 | 5 lanes at 200 MHz | 114 accepted, 0 rejected; preserved unchanged |
+| PyBLOCK mainnet | 8 FK33s | 6 lanes at 195 MHz | physical difficulty-1 share proof, live Carousel work on every device |
+| PyBLOCK mainnet | JCM33 FPGA A and B | 6 lanes at 195 MHz per FPGA | dual-lane physical soak plus live paired Carousel work |
+| Template supplier | Bitcoin Knots 29.4.1 rc4 | mainnet BLAKE2b node | spam-free template accepted by PyBLOCK as `zombiekilla25` |
 
-## Physical qualification
+The active deployment uses `pool.pyblock.xyz:30110` (PyBLOCK Carousel). The
+pool negotiated share difficulty 16,384. At the publication snapshot all ten
+FPGA devices were receiving and rolling work with zero rejected, invalid, or
+stale shares, but no difficulty-16,384 share had yet been found. This is a live
+work-dispatch result, not a pool-accepted Carousel-share qualification or a
+share-derived hashrate measurement.
 
-The image passed an isolated hardware known-answer test and an authenticated
-DATUM job replay on FK0957. A continuous localhost Testnet4 run subsequently
-recorded 114 accepted shares, zero rejected shares, zero unknown submissions,
-one session, and no reconnects. Its final estimated rate was approximately
-0.89 GH/s.
+## Mainnet deployment
 
-The exact sanitized evidence and implementation reports are committed under
-`evidence/`. Release-asset hashes are in `RELEASE_ASSETS_SHA256.txt`.
+- [PyBLOCK Carousel mainnet guide](docs/PYBLOCK_CAROUSEL_MAINNET.md)
+- [JCM33 dual-FPGA guide](docs/JCM33_BLAKE2B_MAINNET.md)
+- [Template supplier guide](docs/TEMPLATE_SUPPLIER.md)
+- [PyBLOCK runtime architecture and artifact record](software/pyblock-carousel/README.md)
+- [2026-08-31 validation snapshot](evidence/mainnet/validation-20260831.json)
 
-## Scope and safety
+The six-lane FK33 and JCM33 images share the same BLAKE2b algorithm but use
+different physical transports and are not interchangeable. Authenticate the
+exact bitstream, adapter, translator, client, bridge, and serial mapping before
+programming hardware.
 
-This is an experimental Testnet4 research release. It is not qualified for
-mainnet, production mining, unattended fleet deployment, or automatic voltage
-or clock changes. Loading FPGA images can disrupt hardware operation. Keep a
-known-good restore image available and target one explicitly identified board.
+## Original Testnet4 reference
 
-No RPC credentials, wallet files, mining addresses, DATUM configurations,
-bridge binaries, or restoration images are included. The transport bridge and
-restore image must be obtained and reviewed separately.
+The original five-lane, 200 MHz Profile-0 FK0957 release remains intact under:
 
-## What is included
+- `hardware/` — RTL, constraints, testbench, and Vivado build flow;
+- `software/continuous-v3/` — physically exercised localhost Testnet4 client;
+- `docs/BSCAN_PROTOCOL.txt` — 121-byte job / 45-byte result transport;
+- `evidence/hardware/` and `evidence/implementation/` — original qualification;
+- `RELEASE_ASSETS_SHA256.txt` and `REPOSITORY_SHA256.txt` — version-1 hashes.
 
-- `hardware/`: exact RTL, constraints, simulation testbench, and build Tcl for
-  the qualified five-lane lineage.
-- `software/continuous-v3/`: the physically exercised localhost Testnet4
-  continuous client release.
-- `docs/BSCAN_PROTOCOL.txt`: exact 121-byte job / 45-byte result transport.
-- `evidence/`: implementation and physical-test records.
+The original qualified release asset is
+`fk33_blake2b_profile0_5lane_200_testnet4_v1_33880a23.bit`, SHA-256
+`33880a2339d8b03db044f74e8258353f9c8f1e9832e74b52efccd18e2328872c`.
 
-## What is deliberately excluded
+## Safety and qualification boundary
 
-- the experimental six-lane build;
-- the discarded target-comparator repair lineage;
-- all wallet backups and RPC authentication material;
-- DATUM pool mode and remote pool configuration;
-- third-party SQRL bridge binaries and FJAR restore bitstreams.
+Programming replaces the active FPGA configuration. Stop other JTAG, Vivado,
+hardware-server, USB/IP, and SQRL owners before loading an image. Keep an
+authenticated restore image available. The published deployment does not
+change voltage.
 
-## Rebuilding
-
-The implementation Tcl targets Vivado 2026.1. Rebuilding can produce a
-functionally equivalent image with a different binary hash. Do not replace the
-qualified release asset without rerunning RTL simulation, timing, route, DRC,
-known-answer, live job, and continuous share-acceptance gates.
+Pool authorization and rising job/roll counters prove connectivity and work
+dispatch; they do not prove an accepted high-difficulty share. Do not report a
+Carousel hashrate until accepted shares provide a statistically useful sample.
+See [SECURITY.md](SECURITY.md) before operating on mainnet.
 
 ## Licensing
 
-No blanket license grant is made by this initial evidence release. Review
-`NOTICE.md` before redistributing source, bitstreams, or third-party components.
+No blanket license grant is made. Review [NOTICE.md](NOTICE.md) before
+redistributing source, bitstreams, bridge binaries, or third-party components.

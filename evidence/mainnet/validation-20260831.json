@@ -1,0 +1,35 @@
+{
+  "schema": "fk33-jcm33-pyblock-carousel-validation-v1",
+  "snapshot_date_utc": "2026-08-31",
+  "sanitized_public_record": true,
+  "pool": {
+    "host": "pool.pyblock.xyz",
+    "port": 30110,
+    "negotiated_difficulty": 16384,
+    "accepted_shares_observed": 0,
+    "qualification": "live-work-dispatch-only"
+  },
+  "supplier": {
+    "name": "zombiekilla25",
+    "template_gate": "passed",
+    "transactions_validated": 50
+  },
+  "fk33": {
+    "device_count": 8,
+    "lanes_per_device": 6,
+    "clock_mhz": 195,
+    "carousel_rejected_shares": 0
+  },
+  "jcm33": {
+    "fpga_count": 2,
+    "lanes_per_fpga": 6,
+    "clock_mhz": 195,
+    "xvc_devices": 2,
+    "xvc_ir_bits": 12,
+    "carousel_rejected_shares": 0,
+    "invalid_lane_frames": 0,
+    "stale_lane_frames": 0
+  },
+  "nominal_capacity_ghs": 11.7,
+  "qualification_boundary": "No difficulty-16384 Carousel share had been accepted at the snapshot. Job dispatch and zero error counters must not be represented as pool-accepted-share or share-derived-hashrate qualification."
+}

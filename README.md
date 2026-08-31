@@ -13,12 +13,38 @@ the six-lane 195 MHz mainnet/PyBLOCK deployment exercised on 2026-08-31.
 | PyBLOCK mainnet | JCM33 FPGA A and B | 6 lanes at 195 MHz per FPGA | dual-lane physical soak plus live paired Carousel work |
 | Template supplier | Bitcoin Knots 29.4.1 rc4 | mainnet BLAKE2b node | spam-free template accepted by PyBLOCK as `zombiekilla25` |
 
-The active deployment uses `pool.pyblock.xyz:30110` (PyBLOCK Carousel). The
-pool negotiated share difficulty 16,384. At the publication snapshot all ten
-FPGA devices were receiving and rolling work with zero rejected, invalid, or
-stale shares, but no difficulty-16,384 share had yet been found. This is a live
-work-dispatch result, not a pool-accepted Carousel-share qualification or a
-share-derived hashrate measurement.
+The default mining endpoint is the dedicated `zombiekilla25` supplier pool:
+
+```text
+Pool:      stratum+tcp://pool.pyblock.xyz:21020
+Username:  YOUR_BTC_ADDRESS.worker
+Password:  x
+```
+
+### Bitstream developer fee
+
+Official mining clients distributed with this bitstream are intended to use a
+disclosed **1% developer fee**. The client implements this separately from the
+pool's supplier split by spending approximately 1% of mining sweeps on a second
+Stratum session authorized as:
+
+```text
+bc1qe77h4ddu6cctl4zgxhy4wa6cf2z0gpsxw9dkvu.devfee
+```
+
+The remaining approximately 99% of sweeps mine to the user's configured payout
+address. PyBLOCK's supplier and pool shares are separate pool-side allocations;
+they are not the bitstream developer fee. Third-party clients that do not
+implement the second-session rotation do not enforce this fee. The archived
+Carousel-client hashes below identify the 2026-08-31 deployment and, by
+themselves, do not prove developer-fee enforcement.
+
+The 2026-08-31 validation snapshot used the earlier PyBLOCK Carousel endpoint
+at `pool.pyblock.xyz:30110`, which negotiated share difficulty 16,384. At that
+snapshot all ten FPGA devices were receiving and rolling work with zero
+rejected, invalid, or stale shares, but no difficulty-16,384 share had yet been
+found. This is a live work-dispatch result, not a pool-accepted Carousel-share
+qualification or a share-derived hashrate measurement.
 
 ## Mainnet deployment
 

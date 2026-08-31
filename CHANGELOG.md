@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.0-beta - 2026-08-31
+
+- Make the dedicated `zombiekilla25` supplier endpoint at
+  `pool.pyblock.xyz:21020` the documented default.
+- Publish FK33 client v8 and JCM33 dual client v2 with a disclosed client-level
+  1% developer fee, separate from pool-side supplier and pool allocations.
+- Use deterministic one-in-100 work dispatch with fail-open user mining and no
+  catch-up after developer-session outages.
+- Add exact-production-translator handshake tests and separate user/developer
+  response accounting.
+- Record live dual-session verification on two FK33 clients and one JCM33
+  client without claiming an accepted developer share.
+
 ## 2.0.0-beta - 2026-08-31
 
 - Document the six-lane 195 MHz BLAKE2b mainnet deployment across eight FK33s

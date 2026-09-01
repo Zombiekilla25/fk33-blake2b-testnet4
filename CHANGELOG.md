@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Document `pool.pyblock.xyz:30110` as the manual fallback when the dedicated
+  supplier listener on port `21020` is unavailable.
+- Clarify that clients must be restarted with the fallback port explicitly
+  configured; automatic port failover is not claimed.
+
 ## 2.1.0-beta - 2026-08-31
 
 - Make the dedicated `zombiekilla25` supplier endpoint at

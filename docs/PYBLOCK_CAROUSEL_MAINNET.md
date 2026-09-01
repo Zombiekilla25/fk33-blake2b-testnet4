@@ -8,10 +8,15 @@ host-specific launch commands are deliberately excluded.
 ## Pool interface
 
 ```text
-Pool:      stratum+tcp://pool.pyblock.xyz:30110
+Primary:   stratum+tcp://pool.pyblock.xyz:21020
+Fallback:  stratum+tcp://pool.pyblock.xyz:30110
 Username:  YOUR_BTC_ADDRESS.worker
 Password:  x
 ```
+
+Port `30110` is the manual fallback when the dedicated supplier listener on
+port `21020` is unavailable. The clients do not fail over automatically; set
+the fallback port in the launch configuration and restart the client.
 
 Only a public payout address is required. Never provide a private key, seed
 phrase, wallet file, RPC cookie, or RPC password to a miner or pool.

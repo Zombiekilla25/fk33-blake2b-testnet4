@@ -32,6 +32,11 @@ published translator's exact response validation. See
 `tests/test_pyblock_devfee_runtime.py` for deterministic scheduling, real
 translator handshake, worker authorization, and outage tests.
 
+The dedicated supplier endpoint is `pool.pyblock.xyz:21020`. If that listener
+is unavailable, `pool.pyblock.xyz:30110` is the documented manual fallback.
+Configure both the user and developer Stratum sessions with the same selected
+port; these clients do not change ports automatically.
+
 The live verification boundary is two established port-21020 connections for
 each of two FK33 v8 processes and one JCM33 v2 process. That proves separate
 sessions were connected; it does not prove a developer share was accepted.

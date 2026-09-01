@@ -16,10 +16,15 @@ the six-lane 195 MHz mainnet/PyBLOCK deployment exercised on 2026-08-31.
 The default mining endpoint is the dedicated `zombiekilla25` supplier pool:
 
 ```text
-Pool:      stratum+tcp://pool.pyblock.xyz:21020
+Primary:   stratum+tcp://pool.pyblock.xyz:21020
+Fallback:  stratum+tcp://pool.pyblock.xyz:30110
 Username:  YOUR_BTC_ADDRESS.worker
 Password:  x
 ```
+
+Use port `30110` manually when the dedicated supplier listener on `21020` is
+unavailable. The published clients do not switch ports automatically; restart
+them with the fallback port explicitly configured.
 
 ### Bitstream developer fee
 
